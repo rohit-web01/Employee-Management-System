@@ -12,6 +12,7 @@ const App = () => {
   // },)
 
   const [user, setUser] = useState('')
+
   const handleLogin = (email, password) => {
       if(email=='admin@123.com' && password ==123){
         setUser('admin')
@@ -21,6 +22,9 @@ const App = () => {
         alert("Invalid Credentials")
       }
   }
+
+  
+
   return (
     <>
     {!user ? <Login handleLogin={handleLogin}/> : ''}
