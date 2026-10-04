@@ -11,6 +11,7 @@ const Login = () => {
     setEmail('')
     setPassword('')
   }  
+  
   return (
     <div className='flex h-screen w-screen items-center justify-center'>
         <div className='border-2 rounded-xl border-emerald-600 p-25'>

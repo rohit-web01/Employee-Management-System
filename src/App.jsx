@@ -8,12 +8,14 @@ const App = () => {
 
   useEffect(()=>{
     setLocalStorage()
+
     getLocalStorage()
   },)
 
   return (
     <>
     <Login />
+    
     {/* <EmployeeDashboard /> */}
     {/* <AdminDashboard /> */}
     </>
