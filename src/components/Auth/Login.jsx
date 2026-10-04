@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 
-const Login = () => {
+const Login = ({handleLogin}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('') 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleLogin(email,password)
     console.log("Email : ",email)
     console.log("Password : ",password)
     setEmail('')
     setPassword('')
   }  
-  
+
   return (
     <div className='flex h-screen w-screen items-center justify-center'>
         <div className='border-2 rounded-xl border-emerald-600 p-25'>

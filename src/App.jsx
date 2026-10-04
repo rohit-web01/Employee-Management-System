@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
@@ -6,18 +6,25 @@ import { getLocalStorage, setLocalStorage } from './utils/localStorage'
 
 const App = () => {
 
-  useEffect(()=>{
-    setLocalStorage()
+  // useEffect(()=>{
+  //   setLocalStorage()
+  //   getLocalStorage()
+  // },)
 
-    getLocalStorage()
-  },)
-
+  const [user, setUser] = useState('')
+  const handleLogin = (email, password) => {
+      if(email=='admin@123.com' && password ==123){
+        setUser('admin')
+      }else if(email=='employee@123.com' && password==123){
+        setUser('employee')
+      }else{
+        alert("Invalid Credentials")
+      }
+  }
   return (
     <>
-    <Login />
-    
-    {/* <EmployeeDashboard /> */}
-    {/* <AdminDashboard /> */}
+    {!user ? <Login handleLogin={handleLogin}/> : ''}
+    {user == 'admin' ? <AdminDashboard /> : <EmployeeDashboard />}
     </>
   )
 }
