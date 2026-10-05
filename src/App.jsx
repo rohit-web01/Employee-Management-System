@@ -1,34 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
 import { getLocalStorage, setLocalStorage } from './utils/localStorage'
+import {AuthContext} from './context/AuthProvider'
 
 const App = () => {
 
-  // useEffect(()=>{
-  //   setLocalStorage()
-  //   getLocalStorage()
-  // },)
+  const [user, setUser] = useState(null)
+  const [loggedInUserData, setLoggedInUserData] = useState(null)
+  const authData = useContext(AuthContext)
 
-  const [user, setUser] = useState('')
+  // useEffect(()=>{
+  //   if(authData){
+  //     const loggedInUser = localStorage.getItem("loggedInUser")
+  //     if(loggedInUser){
+  //       setUser(loggedInUser.role)
+  //     }
+  //   }
+  // },[authData]);
 
   const handleLogin = (email, password) => {
-      if(email=='admin@123.com' && password ==123){
+      if(email == 'admin@me.com' && password == 123){
         setUser('admin')
-      }else if(email=='employee@123.com' && password==123){
-        setUser('employee')
+        console.log("Admin tried to login")
+        localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
+      }else if(authData){
+        const employee = authData.employees.find((e)=>e.email == email && e.password == password)
+        if(employee){
+          console.log("Employee: ",employee)
+          setUser('employee')
+          setLoggedInUserData(employee)
+          localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
+        }
       }else{
         alert("Invalid Credentials")
       }
   }
 
-  
-
   return (
     <>
     {!user ? <Login handleLogin={handleLogin}/> : ''}
-    {user == 'admin' ? <AdminDashboard /> : <EmployeeDashboard />}
+    {user == 'admin' ? <AdminDashboard /> : (user == 'employee' ? <EmployeeDashboard data={loggedInUserData}/> : '')}
     </>
   )
 }

@@ -11,6 +11,7 @@ const Login = ({handleLogin}) => {
     console.log("Password : ",password)
     setEmail('')
     setPassword('')
+
   }  
 
   return (
