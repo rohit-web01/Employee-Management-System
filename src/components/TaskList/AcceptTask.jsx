@@ -4,7 +4,7 @@ const AcceptTask = ({data}) => {
   return (
       <div className="h-full p-5 w-75 bg-red-400 rounded-xl shrink-0">
         <div className="flex justify-between items-center">
-          <h3 className="bg-red-600 text-sm px-3 py-1">{data.category}</h3>
+          <h3 className="bg-red-600 text-sm px-3 py-1 rounded">{data.category}</h3>
           <h4 className="text-sm">{data.date}</h4>
         </div>
 
@@ -12,9 +12,9 @@ const AcceptTask = ({data}) => {
         <p className="text-sm mt-2">
           {data.taskDescription}
         </p>
-        <div className='flex justify-between mt-4'>
-            <button className='rounded cursor-pointer bg-green-500 py-1 px-2 text-sm'>Mark as Completed</button>
-            <button className='rounded cursor-pointer bg-red-500 py-1 px-2 text-sm' >Mark as Failed</button>
+        <div className='flex justify-between mt-6'>
+            <button className='rounded cursor-pointer bg-green-500 py-1 px-2 text-sm font-medium'>Mark as Completed</button>
+            <button className='rounded cursor-pointer bg-red-500 py-1 px-2 text-sm font-medium' >Mark as Failed</button>
         </div>
       </div>
   )
