@@ -6,7 +6,7 @@ import AllTask from "../Others/AllTask.jsx";
 const AdminDashboard = () => {
   return (
     <div className="h-screen w-full p-7">
-      <Header />
+      <Header/>
       <CreateTask />
       <AllTask />
     </div>
