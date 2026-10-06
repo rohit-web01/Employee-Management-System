@@ -1,6 +1,7 @@
 import React from "react";
 
-const TaskList = () => {
+const TaskList = ({data}) => {
+  console.log('value of data in TaskList: ',data)
   return (
     <div
       id="tasklist"
