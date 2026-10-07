@@ -27,7 +27,6 @@ const CreateTask = () => {
     data.forEach((e)=>{
       if(assignTo == e.firstName){
        e.tasks.push(newTask)
-       console.log(e)
       }
     })
     setUserData(data)
